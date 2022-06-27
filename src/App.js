@@ -1,14 +1,20 @@
 import React from "react";
-import Login from './components/Login'
+import Login from './components/Login';
+import Header from './components/Header';
 
 function App(){
-    const [user, setUser] = React.useState('');
+    const [user, setUser] = React.useState('reed');
     
-
+    React.useEffect(() =>{
+        document.title = user ? `${user}'s Feed`: "Please login";
+    }, [user]);
+// above is tab title
     if(!user){
         return <Login setUser={setUser} />;
     }
-    return <div>app</div>
+    return <>
+        <Header user={user} setUser={setUser} />
+    </>;
 }   
 
 export default App;

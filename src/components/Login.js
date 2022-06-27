@@ -10,7 +10,7 @@ function Login({ setUser }){
     return (
     <div>
         <h2>Login</h2>
-        <form>
+        <form onSubmit={handleSubmit}>
             <input 
             onChange={event => setUsername(event.target.value)}
             placeholder="Input username" />
