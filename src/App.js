@@ -5,6 +5,8 @@ import CreatePost from "./components/CreatePost";
 
 function App(){
     const [user, setUser] = React.useState('reed');
+    const [posts, setPosts] = React.useState([])
+    // List or array of post objects
     
     React.useEffect(() =>{
         document.title = user ? `${user}'s Feed`: "Please login";
@@ -15,7 +17,21 @@ function App(){
     }
     return <>
         <Header user={user} setUser={setUser} />
-        <CreatePost user={user} />
+        <CreatePost user={user} setPosts={setPosts} post={posts} />
+        {/* need previous array of posts so create new prop */}
+        {posts.map(post =>(
+            <>
+            {post.image &&(
+                <img 
+                    style={{height: 100, width:200, objectFit:'cover'}}
+                    src={URL.createObjectURL(post.image)}
+                    alt="Post cover" 
+                />
+            )}
+            <p>{post.content}</p>
+            <div>{user}</div>
+            </>
+        ))}
     </>;
 }   
 
