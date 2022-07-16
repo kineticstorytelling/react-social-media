@@ -13,10 +13,12 @@ function CreatePost({ user, setPosts, posts }){
         const newPosts =[post, ...posts];
         // spreading in the posts
         setPosts(newPosts);
+        setContent
     }
-    return <div>
+    return (
+        <div>
         <h1>Create New Post</h1>
-        <form>
+        <form onSubmit={handleSubmit}>
             <input 
             type="text" 
             placeholder="Add Post Content"
@@ -30,6 +32,7 @@ function CreatePost({ user, setPosts, posts }){
             <button type="submit">Submit Post</button>
         </form>
         </div>
+    );
 }   
 
 export default CreatePost;

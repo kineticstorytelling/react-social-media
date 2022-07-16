@@ -15,24 +15,27 @@ function App(){
     if(!user){
         return <Login setUser={setUser} />;
     }
-    return <>
+    
+    return (
+        <>
         <Header user={user} setUser={setUser} />
         <CreatePost user={user} setPosts={setPosts} post={posts} />
         {/* need previous array of posts so create new prop */}
-        {posts.map(post =>(
-            <>
+        {posts.map((post, i) =>(
+            <React.Fragment key={i}>
             {post.image &&(
                 <img 
-                    style={{height: 100, width:200, objectFit:'cover'}}
-                    src={URL.createObjectURL(post.image)}
-                    alt="Post cover" 
+                style={{height: 100, width:200, objectFit:'cover'}}
+                src={URL.createObjectURL(post.image)}
+                alt="Post cover" 
                 />
-            )}
+                )}
             <p>{post.content}</p>
             <div>{user}</div>
-            </>
+                </React.Fragment>
         ))}
-    </>;
+    </>
+    );
 }   
 
 export default App;
